@@ -1,0 +1,14 @@
+<form action="{% url 'home:login' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label class="form-label" for="input-example-1">Nombre de Usuario</label>
+        <input class="form-input" type="text" id="username" name="username">
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="input-example-1">Contraseña</label>
+        <input class="form-input" type="password" id="password" name="password">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block">Iniciar Sesion</button>
+    </div>
+</form>

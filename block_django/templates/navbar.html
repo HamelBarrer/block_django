@@ -1,0 +1,31 @@
+{% url 'home:index' as index %}
+{% url 'home:login' as login %}
+{% url 'home:logout' as logout %}
+{% url 'home:register' as register %}
+
+<header class="navbar">
+    <section class="navbar-section">
+        {% if user.is_authenticated %}
+            <a href="{{ index }}" class="btn btn-link">Inicio</a>
+            <a href="#" class="btn btn-link">Crear Notas</a>
+        {% endif %}
+    </section>
+        
+    <section class="navbar-center">
+        <!-- centered logo or brand -->
+    </section>
+    
+    {% if user.is_authenticated %}  
+        <section class="navbar-section">
+            <a href="#" class="btn btn-link">Mis notas</a>
+            <a href="#" class="btn btn-link">Perfil</a>
+            <a href="{{ logout }}" class="btn btn-link">Cerrar Sesion</a>
+        </section>  
+    {% else %}
+        <section class="navbar-section">
+            <a href="#" class="btn btn-link">Contacto</a>
+            <a href="{{ register }}" class="btn btn-link">Iniciar Sesion</a>
+        </section>
+    {% endif %}
+        
+</header>

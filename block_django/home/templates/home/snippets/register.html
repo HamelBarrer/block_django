@@ -1,0 +1,17 @@
+<form action="{% url 'home:register' %}" method="POST">
+    {% csrf_token %}
+    
+    {% for fields in form %}
+        <div class="form-group">
+            {{ fields.label_tag }}
+            {{ fields }}
+            
+            {% if fields.errors %}
+                {{ fields.errors }}
+            {% endif %}
+                
+        </div>
+    {% endfor %}
+        
+    <button class="btn btn-primary btn-block" type="submit">Registrarse</button>
+</form>
