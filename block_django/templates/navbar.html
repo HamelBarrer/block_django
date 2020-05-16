@@ -2,6 +2,7 @@
 {% url 'home:login' as login %}
 {% url 'home:logout' as logout %}
 {% url 'home:register' as register %}
+{% url 'notes:note' as note %}
 
 <header class="navbar">
     <section class="navbar-section">
@@ -17,7 +18,7 @@
     
     {% if user.is_authenticated %}  
         <section class="navbar-section">
-            <a href="#" class="btn btn-link">Mis notas</a>
+            <a href="{{ note }}" class="btn btn-link">Mis notas</a>
             <a href="#" class="btn btn-link">Perfil</a>
             <a href="{{ logout }}" class="btn btn-link">Cerrar Sesion</a>
         </section>  

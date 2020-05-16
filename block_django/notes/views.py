@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .utils import get_or_create_note
+
+
+def note_view(request):
+    template_name = 'notes/note.html'
+    note = get_or_create_note(request)
+
+    return render(request, template_name, {
+    })
