@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.views.generic import View
 
 from .utils import get_or_create_book
+from .models import Book
 
 from notes.models import Note
 from notes.forms import NoteForm
@@ -20,9 +22,9 @@ def add_book(request):
     book = get_or_create_book(request)
     form = NoteForm(request.POST)
     if request.method == 'POST' and form.is_valid():
-        note = Note.objects.get(pk=form.pk)
+        note = form.save()
+        print(note)
         book.notes.add(note)
-        form.save()
         return redirect('books:book')
     return render(request, template_name, {
         'form': form,
