@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .utils import get_or_create_note
+from .forms import NoteForm
 
 
-def note_view(request):
-    template_name = 'notes/note.html'
-    note = get_or_create_note(request)
+# def note_view(request):
+#     template_name = 'notes/create_note.html'
+#     form = NoteForm(request.POST or None)
+#     if request.method == 'POST' and form.is_valid():
+#         print(form)
+#         form.save()
+#         return redirect('home:index')
 
-    return render(request, template_name, {
-    })
+#     return render(request, template_name, {
+#         'form': form,
+#     })

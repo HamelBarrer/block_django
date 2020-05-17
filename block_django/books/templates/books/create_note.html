@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title h3 text-center">Crear una Nota</div>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                
+                {% for fields in form %}
+                    <div class="form-group">
+                        {{ fields.label_tag }}
+                        {{ fields }}
+                    </div>
+                {% endfor %}
+                
+                <button type="submit" class="btn btn-primary btn-block">Crear Nota</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+    
