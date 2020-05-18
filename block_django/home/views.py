@@ -48,7 +48,7 @@ def register_view(request):
         if user:
             login(request, user)
             messages.success(request, 'Usuario creado exitosamente')
-            return redirect('notes:note')
+            return redirect('home:index')
     return render(request, 'home/login_or_create.html', {
         'form': form,
     })

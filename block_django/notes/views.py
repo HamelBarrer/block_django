@@ -1,16 +1,9 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 
-from .forms import NoteForm
+from .models import Note
 
 
-# def note_view(request):
-#     template_name = 'notes/create_note.html'
-#     form = NoteForm(request.POST or None)
-#     if request.method == 'POST' and form.is_valid():
-#         print(form)
-#         form.save()
-#         return redirect('home:index')
-
-#     return render(request, template_name, {
-#         'form': form,
-#     })
+class NoteListView(ListView):
+    template_name = 'notes/note.html'
+    model = Note

@@ -11,9 +11,11 @@ from notes.forms import NoteForm
 def book_view(request):
     template_name = 'books/book.html'
     book = get_or_create_book(request)
+    quantity = Note.objects.all().count()
 
     return render(request, template_name, {
         'book': book,
+        'quantity': quantity,
     })
 
 
@@ -23,8 +25,7 @@ def add_book(request):
     form = NoteForm(request.POST)
     if request.method == 'POST' and form.is_valid():
         note = form.save()
-        print(note)
-        book.notes.add(note)
+        book.notes.add(note.pk)
         return redirect('books:book')
     return render(request, template_name, {
         'form': form,

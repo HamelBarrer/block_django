@@ -4,7 +4,13 @@
     <div class="card">
         
         {% if book %}
-            <h2>hola papu</h2>
+            <div class="card-header">
+                <div class="card-title h3 text-center">Libro</div>
+            </div>
+            <div class="card-body">
+                <p>{{ user.username}} tienes una cantidad de libros creados de {{ quantity }}</p>
+                <a href="{% url 'notes:note_list' %}" class="btn btn-primary btn-block">Ver mis notas creadas</a>
+            </div>
         {% else %}
             <div class="card-header">
                 <div class="card-title h3 text-center">No tienes notas</div>
