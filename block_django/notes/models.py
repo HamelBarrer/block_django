@@ -8,6 +8,7 @@ from users.models import User
 
 
 class Note(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     nota = models.TextField(max_length=300)
     slug = models.SlugField(null=False, blank=False, unique=True)

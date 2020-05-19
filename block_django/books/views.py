@@ -11,7 +11,7 @@ from notes.forms import NoteForm
 def book_view(request):
     template_name = 'books/book.html'
     book = get_or_create_book(request)
-    quantity = Note.objects.all().count()
+    quantity = Note.objects.filter(user=request.user).order_by('-pk')
 
     return render(request, template_name, {
         'book': book,
@@ -24,7 +24,9 @@ def add_book(request):
     book = get_or_create_book(request)
     form = NoteForm(request.POST)
     if request.method == 'POST' and form.is_valid():
-        note = form.save()
+        note = form.save(commit=False)
+        note.user = request.user
+        note.save()
         book.notes.add(note.pk)
         return redirect('books:book')
     return render(request, template_name, {
