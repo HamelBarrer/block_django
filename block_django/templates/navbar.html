@@ -4,12 +4,15 @@
 {% url 'home:register' as register %}
 {% url 'books:book' as book %}
 {% url 'books:add_note' as add_note %}
+{% url 'books:add_note' as add_note %}
+{% url 'notes:graphic' as graphic %}
 
 <header class="navbar">
     <section class="navbar-section">
         {% if user.is_authenticated %}
             <a href="{{ index }}" class="btn btn-link">Inicio</a>
             <a href="{{ add_note }}" class="btn btn-link">Crear Notas</a>
+            <a href="{{ graphic }}" class="btn btn-link">Graficos</a>
         {% endif %}
     </section>
         
